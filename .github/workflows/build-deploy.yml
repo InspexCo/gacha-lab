@@ -25,16 +25,11 @@ jobs:
     - name: Build project
       run: yarn build
     
-    - name: Add custom domain name
-      run: echo "gachalab.inspex.co" > ./build/CNAME
-    
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
       with:
         name: production-files
         path: ./build
-
-    
   
   deploy:
     name: Deploy

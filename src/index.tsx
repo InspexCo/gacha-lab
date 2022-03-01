@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import './scss/custom.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <HashRouter>
