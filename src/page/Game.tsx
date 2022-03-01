@@ -116,6 +116,7 @@ const Game: FC<GameProps> = ({level, config, currentAccount, provider}) => {
 
   useEffect(() => {
     init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config, currentAccount, provider, level]);
 
   return (
