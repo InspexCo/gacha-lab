@@ -98,7 +98,7 @@ const Game: FC<GameProps> = ({level, config, currentAccount, provider}) => {
         let err = (_err as ProviderError);
         if (err.data) toast.error(err.data.message);
         else toast.error(err.message);
-        
+
         console.error(err);
       }
       setIsApproving(false);
@@ -146,6 +146,7 @@ const Game: FC<GameProps> = ({level, config, currentAccount, provider}) => {
 
   const init = async () => {
     setLoading(true);
+    setFreeTicketCountDown("");
     await loadBalance();
     await loadCapsules();
     await loadNextFreeTicketBlock();
@@ -196,7 +197,7 @@ const Game: FC<GameProps> = ({level, config, currentAccount, provider}) => {
             <tr>
               <th className="text-nowrap bg-secondary" scope="row">Action</th>
               <td className="w-100">
-                <button className="btn btn-secondary"onClick={handlerFreeTicket} disabled={isLoadFeeTicket }>
+                <button className="btn btn-secondary"onClick={handlerFreeTicket} disabled={isLoadFeeTicket || nextFreeTicket === undefined || nextFreeTicket > Math.floor(Date.now() / 1000) }>
                   Get Free Ticket
                   { freeTicketCountDown.length > 0 && ` (${freeTicketCountDown})` }
                   { isLoadFeeTicket && <span className="ms-2 spinner-border spinner-border-sm" role="status"></span> }
