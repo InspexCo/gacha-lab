@@ -104,7 +104,6 @@ const Game: FC<GameProps> = ({level, config, currentAccount, provider}) => {
       setIsApproving(false);
       await doRoll();
     }
-    await loadCapsules();
   }
   
   const doRoll = async () => {
@@ -122,7 +121,8 @@ const Game: FC<GameProps> = ({level, config, currentAccount, provider}) => {
 
       console.error(err);
     }
-    
+    await loadBalance();
+    await loadCapsules();
     setIsRolling(false);
   }
 
